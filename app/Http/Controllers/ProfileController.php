@@ -7,29 +7,21 @@ use App\Models\Student;
 
 class ProfileController extends Controller
 {
-    public function getprofile(){
-        return response()->json(['message'=>'Student']);
-    }
-    public function register(Request $request){
-
+    public function getprofile($id)
+    {
+        $profile = Student::find($id);
+        return response()->json(['message'=>'this your profile','data'=>$profile]);
        
-        $validate = $request->validate([
-            'name'=>'required',
-            'gambar'=>'required|file|max:1024',
-            'kelas'=>'required',
-            'pringkat'=>'required'
-        ]);
+    }
+    public function register(Request $request)
+    {
         $image = $request->file('image')->store('post-images');
         $data = new Student;
         $data->name = $request->name;
-        $data->image = $request->image;
+        $data->image = $image;
         $data->kelas = $request->kelas;
         $data->peringkat = $request->peringkat;
-        // if($request->file('image')){
-        //     $validate['gambar'] = $request->file('image')->store('post-images');
-        // 
-        $success = $data->save();
-            return response()->json(array('success' => 'success', 'data' => $data));
+        $data->save();
+        return response()->json(['message' => 'success', 'data']);
     }
-   
 }

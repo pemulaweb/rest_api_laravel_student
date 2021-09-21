@@ -19,13 +19,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/contoh', function(){
+Route::get('/contoh', function () {
     return response()->json('success');
 });
-
-Route::post('/registerstudent', [ProfileController::class, 'register']);
-Route::get('getprofile', [ProfileController::class, 'getprofile']);
+/* ini untuk data student */
+Route::post('/register', [ProfileController::class, 'register']);
+Route::get('/getprofile/{id}', [ProfileController::class, 'getprofile']);
 Route::put('profiledit', [ProfileController::class, 'profiledit']);
 Route::delete('profiledelete', [ProfileController::class, 'profiledelete']);
-
+/* ini untuk data nilai */
 Route::post('nilai', [PeringkatController::class, 'add']);
