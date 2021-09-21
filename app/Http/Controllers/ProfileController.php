@@ -17,7 +17,7 @@ class ProfileController extends Controller
             'name'=>'required',
             'gambar'=>'required|file|max:1024',
             'kelas'=>'required',
-            'pringkat'=>'required'
+            'peringkat'=>'required'
         ]);
         $image = $request->file('image')->store('post-images');
         $data = new Student;
