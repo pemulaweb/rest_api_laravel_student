@@ -29,3 +29,5 @@ Route::put('profiledit', [ProfileController::class, 'profiledit']);
 Route::delete('profiledelete', [ProfileController::class, 'profiledelete']);
 /* ini untuk data nilai */
 Route::post('nilai', [PeringkatController::class, 'add']);
+
+Route::post('/uploadImage', [PeringkatController::class, 'uploadImage']);

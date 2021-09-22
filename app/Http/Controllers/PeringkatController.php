@@ -13,5 +13,11 @@ class PeringkatController extends Controller
         $data->save();
         return response()->json(['message'=>'success', 'data'=>$data]);
     }
-   
+
+    public function uploadImage(Request $request){
+        $request->file('image')->store('post-images');
+        return response()->json(['message'=>'success image tersimpan']);
+    }
+
+    
 }

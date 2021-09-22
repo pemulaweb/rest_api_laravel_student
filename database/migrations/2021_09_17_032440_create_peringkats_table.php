@@ -15,7 +15,8 @@ class CreatePeringkatsTable extends Migration
     {
         Schema::create('peringkats', function (Blueprint $table) {
             $table->id();
-            $table->string('nilai');    
+            $table->string('nilai'); 
+               
             $table->timestamps();
         });
     }
