@@ -23,6 +23,7 @@ Route::get('/contoh', function () {
     return response()->json('success');
 });
 /* ini untuk data student */
+Route::get('/getprofile', [ProfileController::class, 'getUser']);
 Route::post('/register', [ProfileController::class, 'register']);
 Route::get('/getprofile/{id}', [ProfileController::class, 'getprofile']);
 Route::put('profiledit', [ProfileController::class, 'profiledit']);
