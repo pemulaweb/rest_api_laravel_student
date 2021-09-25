@@ -15,6 +15,8 @@ class CreateAbsensisTable extends Migration
     {
         Schema::create('absensis', function (Blueprint $table) {
             $table->id();
+            $table->boolean('absen')->default(false);
+            $table->foreignId('student_Id');
             $table->timestamps();
         });
     }

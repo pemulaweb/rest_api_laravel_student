@@ -20,7 +20,6 @@ class CreateStudentsTable extends Migration
             $table->string('image');
             $table->foreignId('kelas_id');
             $table->foreignId('peringkat_id');
-            $table->foreignId('penilaian_id');
             $table->timestamps();
         });
     }

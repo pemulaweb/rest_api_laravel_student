@@ -16,7 +16,7 @@ class CreatePeringkatsTable extends Migration
         Schema::create('peringkats', function (Blueprint $table) {
             $table->id();
             $table->string('nilai'); 
-            $table->foreignId('student_id');  
+            $table->foreignId('student_Id');
             $table->timestamps();
         });
     }

@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    use HasFactory;
+      protected $guarded = [
+      'id'
+      ];
+
+      public function kelas()
+      {
+            return $this->belongsTo(Kelas::class);
+      }
+      public function peringkat()
+      {
+            return $this->hasOne(Peringkat::class);
+      }
 }
