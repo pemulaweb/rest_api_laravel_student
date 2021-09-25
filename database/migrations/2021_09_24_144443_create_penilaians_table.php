@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePeringkatsTable extends Migration
+class CreatePenilaiansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreatePeringkatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('peringkats', function (Blueprint $table) {
+        Schema::create('penilaians', function (Blueprint $table) {
             $table->id();
-            $table->string('nilai'); 
-            $table->foreignId('student_id');  
+            $table->string('pelajaran');
+            $table->string('absensi');
+            $table->string('kerapihan');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreatePeringkatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('peringkats');
+        Schema::dropIfExists('penilaians');
     }
 }
