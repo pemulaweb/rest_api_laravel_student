@@ -17,9 +17,13 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('password');
             $table->string('image');
-            $table->foreignId('kelas_id');
-            $table->foreignId('peringkat_id');
+            $table->foreignId('kelas_id')->default(null);
+            $table->foreignId('peringkat_id')->default(null);
+            $table->foreignId('penilaian_id')->default(null);
+            $table->foreignId('utang_id');
+            $table->foreignId('role_id');
             $table->timestamps();
         });
     }

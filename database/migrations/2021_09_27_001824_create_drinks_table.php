@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePenilaiansTable extends Migration
+class CreateDrinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreatePenilaiansTable extends Migration
      */
     public function up()
     {
-        Schema::create('penilaians', function (Blueprint $table) {
+        Schema::create('drinks', function (Blueprint $table) {
             $table->id();
-            $table->string('pelajaran')->unique();
-            $table->string('absensi');
-            $table->string('kerapihan');
-            $table->foreignId('student_Id')->references('id')
-                ->on('students')
-                ->onDelete('cascade');
+            $table->string('name');
+            $table->string('harga');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreatePenilaiansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penilaians');
+        Schema::dropIfExists('drinks');
     }
 }

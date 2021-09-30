@@ -2,8 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PeringkatController;
+use App\Http\Controllers\PenilaianController;
+use App\Http\Controllers\KantinController;
+use App\Http\Controllers\SendMailController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,12 +26,38 @@ Route::get('/contoh', function () {
     return response()->json('success');
 });
 /* ini untuk data student */
-Route::get('/getprofile', [ProfileController::class, 'getUser']);
-Route::post('/register', [ProfileController::class, 'register']);
-Route::get('/getprofile/{id}', [ProfileController::class, 'getprofile']);
-Route::put('profiledit', [ProfileController::class, 'profiledit']);
-Route::delete('profiledelete', [ProfileController::class, 'profiledelete']);
+Route::get('getprofile', [StudentController::class, 'getUser']);
+Route::post('/register', [StudentController::class, 'register']);
+Route::get('/getprofile/{id}', [StudentController::class, 'getprofile']);
+Route::put('profiledit', [StudentController::class, 'profiledit']);
+Route::delete('profiledelete', [StudentController::class, 'profiledelete']);
 /* ini untuk data nilai */
-Route::post('nilai', [PeringkatController::class, 'add']);
+Route::post('/nilai', [StudentController::class, 'addnilai']);
 
 Route::post('/uploadImage', [PeringkatController::class, 'uploadImage']);
+
+//restapi penilaians
+Route::post('penilaian', [PenilaianController::class, 'penilaian']);
+Route::get('penilaianget', [PenilaianController::class, 'getPenilaian']);
+Route::get('getPenilaianId/{id}', [PenilaianController::class, 'getPenilaianId']);
+
+//kantins
+Route::post('kantins', [KantinController::class, 'addKantin']);
+Route::post('food', [KantinController::class, 'FoodKantin']);
+Route::get('kantinJoin', [KantinController::class, 'kantinJoin']);
+
+Route::get('food', [KantinController::class, 'getfood']);
+Route::get('addToCartFood/{id}', [KantinController::class, 'addToCartFood']);
+
+//kelas
+Route::get('kelas', [StudentController::class, 'getKelas']);
+Route::get('getfood', [KantinController::class, 'getKantin']);
+Route::post('/addkelas', [StudentController::class, 'inputKelas']);
+
+
+//nilai
+Route::post('/peringkatadd', [StudentController::class, 'peringkatadd']);
+Route::get('peringkatStudent', [StudentController::class, 'peringkatStudent']);
+
+//mailgunR\Providers
+Route::get('sendemail', [SendMailController::class, 'sendmailutang']);

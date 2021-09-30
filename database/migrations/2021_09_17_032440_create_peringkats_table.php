@@ -21,6 +21,7 @@ class CreatePeringkatsTable extends Migration
         });
     }
 
+    
     /**
      * Reverse the migrations.
      *

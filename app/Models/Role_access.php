@@ -4,11 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Student;
-class Peringkat extends Model
+
+class Role_access extends Model
 {
     use HasFactory;
-    public function peringkats(){
-        return $this->belongsTo(Student::class);
-    }
 }

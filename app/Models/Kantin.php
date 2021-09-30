@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Student;
-class Peringkat extends Model
+use App\Models\Food;
+class Kantin extends Model
 {
     use HasFactory;
-    public function peringkats(){
-        return $this->belongsTo(Student::class);
+
+    public function Food()
+    {
+       return $this->belongsTo(Food::class); 
     }
+  
 }
