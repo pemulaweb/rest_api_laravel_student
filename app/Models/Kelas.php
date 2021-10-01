@@ -9,7 +9,10 @@ class Kelas extends Model
 {
     use HasFactory;
     
-    public function student(){
-        return $this->hasMany(Student::class);
-    }
+    
+        public function student(): HasMany
+        {
+            return $this->hasMany(Comment::class, 'student_Id', 'id');
+        }
+    
 }

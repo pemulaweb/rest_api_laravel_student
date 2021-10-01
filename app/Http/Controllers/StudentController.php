@@ -14,7 +14,13 @@ class StudentController extends Controller
     public function getprofile($id)
     {
         $getprofile = Student::find($id);
-        return response()->json(['message' => 'this your profile', 'data' => $getprofile, $getprofile->penilaian, $getprofile->peringkat, $getprofile->kelas->name]);
+        $hasilpelajaran = $getprofile->penilaian->pelajaran;
+        $hasilabsensi = $getprofile->penilaian->absensi;
+        $kerapihannilai = $getprofile->penilaian->kerapihan;
+        if($hasilpelajaran){
+           $total = $hasilpelajaran + $hasilabsensi + $kerapihannilai; 
+           return response()->json(['message' => 'this your profile', 'data' => $getprofile, 'penilaian semuanya'=>$total, $getprofile->peringkat, $getprofile->kelas->name]);
+        }
     }
 
     public function getUser()
@@ -81,18 +87,4 @@ class StudentController extends Controller
         return response()->json(['message' => 'success', 'data' => $data]);
     }
 
-
-    //join 5 tablke
-    // public function joinTable()
-    // {
-    //     $data = DB::table('students')
-    //         ->leftJoin('kelas', 'students.id', "=", 'students.kelas_id')
-    //         ->leftJoin('peringkats', 'students.id', "=", 'students.peringkat_id')
-    //         ->leftJoin('penilaians', 'students.id', "=", 'setudents.penilaian_id')
-    //         ->leftJoin('utangs', 'students.id', "=", 'students.utang_id')
-    //         ->get();
-    //     dd($data);
-    // return view('home', $data);
-    // return response()->json(['message' => 'success', 'data' =>$data, 'kelas'=>$data->kelas]);
-    // }
 }
