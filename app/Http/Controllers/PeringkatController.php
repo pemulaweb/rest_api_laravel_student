@@ -10,6 +10,7 @@ class PeringkatController extends Controller
     public function add(Request $request){
         $data = new Peringkat;
         $data->nilai = $request->nilai;
+        $data->student_Id = $request->student_Id;
         $data->save();
         return response()->json(['message'=>'success', 'data'=>$data]);
     }

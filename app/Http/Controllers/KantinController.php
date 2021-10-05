@@ -19,7 +19,6 @@ class KantinController extends Controller
         $data->food_id = $request->food_id;
         $data->drink_id = $request->drink_id;
         $data->utang_id = $request->utang_id;
-
         $data->save();
         return response()->json(['message' => 'Success', 'data' => $data]);
     }
@@ -42,7 +41,7 @@ class KantinController extends Controller
         $data = Food::all();
         return response()->json(['message' => 'this our food is available', 'food' => $data,]);
     }
-    public function addToCartFood($id)
+    public function addToCartFood(Request $request, $id)
     {
         $food = Food::find($id);
         if (!$food) {
@@ -77,6 +76,28 @@ class KantinController extends Controller
         session()->put('cart', $cart);
         return response()->json(['message' => 'success add to cart', 'cart' => $cart]);
     }
+
+    public function addToCart($id)
+    {
+        $food = Food::find($id);
+
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+            $cart[$id] = [
+                "name" => $food->name,
+                "quantity" => 1,
+                "price" => $food->harga,
+                
+            ];
+        }
+
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+
     public function kantinJoin()
     {
         $data = DB::table('kantins')
@@ -85,5 +106,9 @@ class KantinController extends Controller
             ->select('kantins.food.name', 'food')
             ->get();
         return response()->json(['message' => 'join success ', 'data' => $data]);
+    }
+    public function checkout()
+    {
+        
     }
 }

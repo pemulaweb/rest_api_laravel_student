@@ -7,6 +7,7 @@ use App\Http\Controllers\PeringkatController;
 use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\KantinController;
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -46,8 +47,14 @@ Route::post('kantins', [KantinController::class, 'addKantin']);
 Route::post('food', [KantinController::class, 'FoodKantin']);
 Route::get('kantinJoin', [KantinController::class, 'kantinJoin']);
 
+//carts
+Route::post('foodaddtocart', [CartController::class, 'store']);
+
+
 Route::get('food', [KantinController::class, 'getfood']);
-Route::get('addToCartFood/{id}', [KantinController::class, 'addToCartFood']);
+
+Route::put('addToCartFood', [CartController::class, 'addToCart']);
+// Route::put('addToCart/{id}', [KantinController::class, 'addToCart']);
 
 //kelas
 Route::get('kelas', [StudentController::class, 'getKelas']);
@@ -56,8 +63,8 @@ Route::post('/addkelas', [StudentController::class, 'inputKelas']);
 
 
 //nilai
-Route::post('/peringkatadd', [StudentController::class, 'peringkatadd']);
-Route::get('peringkatStudent', [StudentController::class, 'peringkatStudent']);
+Route::post('/peringkatadd', [PeringkatController::class, 'add']);
+Route::get('/peringkatStudent', [StudentController::class, 'peringkatStudent']);
 
 //mailgunR\Providers
 Route::get('sendemail', [SendMailController::class, 'sendmailutang']);
