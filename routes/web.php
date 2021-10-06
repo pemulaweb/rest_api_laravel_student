@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\Drupal\EmployeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +15,4 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::get('/', [StudentController::class, 'joinTable']);
+Route::get('/', [EmployeController::class, 'getEmploye']);

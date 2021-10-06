@@ -40,4 +40,8 @@ class PenilaianController extends Controller
             ->get();
         return response()->json(['message' => 'success', 'data' => $data]);
     }
+    public function getIdnilai($id){
+        $data = Penilaian::find($id);
+        return response()->json(['message' => 'success', 'data' => $data, 'student'=>$data->student]);
+    }
 }

@@ -38,6 +38,13 @@ class CartController extends Controller
     Cart::destroy($id);
     return redirect('cartlist');
   }
+
+
+
+
+
+
+  
   // function orderNow()
   // {
   //   $userId = Session::get('user')['id'];

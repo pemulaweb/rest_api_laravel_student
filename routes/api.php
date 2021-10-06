@@ -8,6 +8,7 @@ use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\KantinController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Drupal\EmployeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -64,7 +65,13 @@ Route::post('/addkelas', [StudentController::class, 'inputKelas']);
 
 //nilai
 Route::post('/peringkatadd', [PeringkatController::class, 'add']);
-Route::get('/peringkatStudent', [StudentController::class, 'peringkatStudent']);
+Route::get('peringkatStudent/{id}', [PenilaianController::class, 'getIdnilai']);
+Route::get('nilaiget/{id}', [PenilaianController::class, 'GetPenilaianId']);
+
 
 //mailgunR\Providers
 Route::get('sendemail', [SendMailController::class, 'sendmailutang']);
+
+
+//drupal data
+Route::delete('hapusdata/{id}', [EmployeController::class, 'deleteEmploye']);
